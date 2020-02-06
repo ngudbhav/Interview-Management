@@ -1,0 +1,18 @@
+<h1>Rendering</h1>
+<div class="interview-form">
+    <form method="POST" action="/interviews" enctype="multipart/form-data">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input type="datetime-local" name="start">
+        <input type="datetime-local" name="end">
+        <%= text_field_tag(:title) %>
+        <%= file_field_tag 'resume' %>
+        <br><br>
+        <%= text_field_tag(:participants, "Enter email of participants(Comma Seperated)") %>
+        <br><br>
+        <input type="submit" value="Create">
+    </form>
+</div>
+<div class="interviews">
+    <h3>All scheduled interviews</h3>
+    <%= render @interviews %>
+</div>

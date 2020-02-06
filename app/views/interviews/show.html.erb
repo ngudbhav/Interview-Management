@@ -1,0 +1,11 @@
+Title of the interview: <%= @interview.title %><br>
+Start Date and time of interview: <%= @interview.start %><br>
+End Date and time of interview: <%= @interview.end %><br>
+This interview was created at: <%= @interview.created_at %><br>
+List of Participants:
+<br> 
+    <% @interview.people.each do |item| %>
+        <br>
+        <%= item.email %>
+        <br>
+    <% end %>

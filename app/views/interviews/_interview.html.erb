@@ -1,0 +1,14 @@
+<br>
+<div class="interviewtile">
+    Start Date and Time:    <%= interview.start %>
+    <br>
+    End Date and Time:    <%= interview.end %>
+    <br>
+    Title: <%= interview.title%>
+    <br>
+    <a href="<%= url_for(interview.resume) %>">Resume Attached</a><br>
+    <a href="/interviews/<%= interview.id %>">Show Details</a>
+    <a href="/interviews/<%= interview.id %>/edit">Edit this interview</a>
+    <a rel="nofollow" data-method="delete" href="/interviews/<%= interview.id %>">Delete</a>
+</div>
+<br>

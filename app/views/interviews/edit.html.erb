@@ -1,0 +1,26 @@
+<form method="POST" action="/interviews/<%= @interview.id %>">
+        <input name="_method" type="hidden" value="put" />
+        <input type="hidden" value="<%= @interview.id %>">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input type="datetime-local" name="start">
+        <input type="datetime-local" name="end">
+        <input type="text" name="title" value="<%= @interview.title %>">
+        <br>
+        <br>
+        <input type="text" name="participants">
+        <br><br>
+        <input type="submit" value="Create">
+    </form>
+    <script>
+    var s = new Date("<%= @interview.start %>").toISOString();
+    var e = new Date("<%= @interview.end %>").toISOString();
+    document.getElementsByName("start")[0].value = s.substring(0, s.length-1)//new Date("<%= @interview.start %>").toISOString();
+    document.getElementsByName("end")[0].value = e.substring(0, e.length-1)
+    var partString = '';
+    <% @interview.people.each do |item| %>
+        partString += '<%= item.email %>';
+        partString += ',';
+    <% end %>
+    console.log(partString);
+    document.getElementsByName('participants')[0].value = partString.substring(0, partString.length-1)
+    </script>
